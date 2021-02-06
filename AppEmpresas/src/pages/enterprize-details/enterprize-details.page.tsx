@@ -1,8 +1,24 @@
-import React from 'react'
-import { Root } from '../../components/root.component'
+import React from 'react';
+import {
+  NavigationComponentProps,
+  NavigationFunctionComponent,
+} from 'react-native-navigation';
+import {Root} from '../../components/root.component';
 
-const EnterprizeDetailsPage: React.FC = (props) => {
-    return <Root></Root>
+interface EnterprizeDetailsPageProps extends NavigationComponentProps {
+  enterprizeName: string;
 }
 
-export default EnterprizeDetailsPage
+const EnterprizeDetailsPage: NavigationFunctionComponent<EnterprizeDetailsPageProps> = (props) => {
+  return <Root></Root>;
+};
+
+EnterprizeDetailsPage.options = (props) => ({
+  topBar: {
+    title: {
+      text: props.enterprizeName,
+    },
+  },
+});
+
+export default EnterprizeDetailsPage;
