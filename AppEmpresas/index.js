@@ -1,9 +1,20 @@
-/**
- * @format
- */
+import { Navigation } from "react-native-navigation";
+import { PageNames, registerPages } from "./src/pages";
 
-import {AppRegistry} from 'react-native';
-import App from './src/App';
-import {name as appName} from './app.json';
+registerPages()
 
-AppRegistry.registerComponent(appName, () => App);
+Navigation.events().registerAppLaunchedListener(() => {
+    Navigation.setRoot({
+      root: {
+        stack: {
+          children: [
+            {
+              component: {
+                name: PageNames.AUTH
+              }
+            }
+          ]
+        }
+      }
+   });
+ });
