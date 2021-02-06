@@ -10,7 +10,7 @@ Navigation.events().registerAppLaunchedListener(() => {
           children: [
             {
               component: {
-                name: PageNames.AUTH
+                name: PageNames.ENTERPRIZE_LIST
               }
             }
           ]

@@ -1,4 +1,12 @@
-import { createStore } from 'redux'
-import { authReducer } from '../reducers/auth-reducer'
+import { combineReducers, createStore } from 'redux'
+import { authReducer, UserState } from '../reducers/auth-reducer'
 
-export const store = createStore(authReducer)
+export interface AppReduxState {
+    user: UserState
+}
+
+const reducers = combineReducers({
+    user: authReducer
+})
+
+export const store = createStore(reducers)

@@ -5,11 +5,13 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
+    "start": "react-native start --reset-cache",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@types/styled-components-react-native": "^5.1.1",
+    "axios": "^0.21.1",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-navigation": "^7.8.4",
@@ -23,12 +25,14 @@
     "@react-native-community/eslint-config": "^1.1.0",
     "@types/jest": "^25.2.3",
     "@types/react-native": "^0.63.2",
+    "@types/react-native-dotenv": "^0.2.0",
     "@types/react-redux": "^7.1.16",
     "@types/react-test-renderer": "^16.9.2",
     "babel-jest": "^25.1.0",
     "eslint": "^6.5.1",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
+    "react-native-dotenv": "^2.5.1",
     "react-test-renderer": "16.13.1",
     "typescript": "^3.8.3"
   },
