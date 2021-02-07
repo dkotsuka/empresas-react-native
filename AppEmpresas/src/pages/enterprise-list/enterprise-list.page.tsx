@@ -13,6 +13,7 @@ import {AppReduxState} from '../../redux/components/redux-store';
 import { actionLogout } from '../../redux/reducers/auth-actions';
 import {MappedEnterprise, MappedType} from '../../services/enterprise.mapper';
 import {enterpriseService} from '../../services/enterprise.service';
+import { EmptyEnterpriseList } from './empty-enterprise-list.component';
 import {EnterpriseItem} from './enterprise-item.component';
 import {EnterpriseList} from './enterprise-list.styles';
 
@@ -71,7 +72,10 @@ const EnterpriseListPage: NavigationFunctionComponent<EnterpriseListPageProps> =
     <Root>
       <SearchBar onSubmit={onSearchSubmit} placeholder="Buscar por nome"/>
       <FilterSelector filters={filters} onApplyFilter={(id) => setTypeFilter(id)}/>
-      <EnterpriseList data={list} renderItem={renderItem} />
+      <EnterpriseList 
+        data={list} 
+        renderItem={renderItem}
+        ListEmptyComponent={<EmptyEnterpriseList/>}/>
     </Root>
   );
 };
