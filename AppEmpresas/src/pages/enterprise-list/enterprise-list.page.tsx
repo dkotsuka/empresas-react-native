@@ -5,10 +5,11 @@ import {
   NavigationComponentProps,
   NavigationFunctionComponent,
 } from 'react-native-navigation';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {PageNames} from '..';
 import {Root} from '../../components/root.component';
 import {AppReduxState} from '../../redux/components/redux-store';
+import { actionLogout } from '../../redux/reducers/auth-actions';
 import {MappedEnterprise} from '../../services/enterprise.mapper';
 import {enterpriseService} from '../../services/enterprise.service';
 import {EnterpriseItem} from './enterprise-item.component';
@@ -21,6 +22,7 @@ const EnterpriseListPage: NavigationFunctionComponent<EnterpriseListPageProps> =
 ) => {
   const {token, client, uid} = useSelector( (state: AppReduxState) => state.user );
   const [list, setList] = useState<MappedEnterprise[]>([]);
+  const dipatch = useDispatch()
 
   useEffect(() => {
     if (!token) {
@@ -35,7 +37,11 @@ const EnterpriseListPage: NavigationFunctionComponent<EnterpriseListPageProps> =
       const {enterprises, types} = await enterpriseService
         .setCredentials(token, client, uid)
         .list();
-      setList(enterprises);
+      if(enterprises) {
+        setList(enterprises);
+      } else {
+        dipatch(actionLogout())
+      }
     }
   };
 

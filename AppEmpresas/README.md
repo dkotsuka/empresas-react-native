@@ -14,18 +14,27 @@ O aplicativo conta com as funcionalidades:
 ## Rodando o projeto em ambiente de desenvolvimento
 Para rodar o projeto localmente em ambiente de desenvolvimento, você deve primeiramente clonar este repositório.
 Instalar as dependências
-            npm install
-            cd ios && pod install
-            cd ..
+```
+npm install
+cd ios && pod install
+cd ..
+```
 Inicializar o bundler
-            npm run start
+```
+npm run start
+```
 Para rodar no sistema operacional Android, assegure-se que o emulador ou o device esteja conectado ao computador.
 Para verificar, basta digitar no terminal e verificar se o device aparece listado:
-            adb devices
+```
+adb devices
+```
 Inicializar o build em modo depuração.
 Android:
-            npm run android
+```
+npm run android
+```
 iOS:
-            npm run ios
-
+```
+npm run ios
+```
 

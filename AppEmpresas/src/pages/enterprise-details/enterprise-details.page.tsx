@@ -4,7 +4,7 @@ import {
   NavigationComponentProps,
   NavigationFunctionComponent,
 } from 'react-native-navigation';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { PageNames } from '..';
 import { Icons } from '../../assets';
 import { Divider } from '../../components/divider.component';
@@ -12,6 +12,7 @@ import { IconButton } from '../../components/icon-button.component';
 import {Root} from '../../components/root.component';
 import { Row } from '../../components/row.component';
 import { AppReduxState } from '../../redux/components/redux-store';
+import { actionLogout } from '../../redux/reducers/auth-actions';
 import { MappedEnterpriseDetails } from '../../services/enterprise.mapper';
 import { enterpriseService } from '../../services/enterprise.service';
 import { DetailsPageAddress, DetailsPageButtonContainer, DetailsPageContainer, DetailsPageDescription, DetailsPageImage, DetailsPageLabel, DetailsPageSecondaryLabel, DetailsPageTitle } from './enterprise-details.styles';
@@ -23,6 +24,7 @@ interface EnterpriseDetailsPageProps extends NavigationComponentProps {
 
 const EnterpriseDetailsPage: NavigationFunctionComponent<EnterpriseDetailsPageProps> = (props) => {
   const { token, client, uid } = useSelector(({user}: AppReduxState) => user)
+  const dipatch = useDispatch()
   const [data, setData] = useState<MappedEnterpriseDetails>()
   useEffect(() => {
     if (!token) {
@@ -35,7 +37,11 @@ const EnterpriseDetailsPage: NavigationFunctionComponent<EnterpriseDetailsPagePr
   const getData = async () => {
     if (token && client && uid) {
       const data = await enterpriseService.setCredentials(token, client, uid).getOne(props.id);
-      if(data) setData(data);
+      if(data) {
+        setData(data);
+      } else {
+        dipatch(actionLogout())
+      }
     }
   };
 
