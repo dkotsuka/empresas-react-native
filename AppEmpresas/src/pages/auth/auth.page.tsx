@@ -26,7 +26,6 @@ const AuthPage: NavigationFunctionComponent<AuthPageProps> = (props) => {
       email,
       password,
     );
-    console.log(token, client, uid);
     if (token && client && uid) {
       dispatch(actionLogin(token, client, uid));
       setLoading(false);

@@ -9,6 +9,8 @@
 O aplicativo conta com as funcionalidades:
 - Página de autenticação com email e senha;
 - Página de listagem de empresas;
+    - Filtro por categoria de empresa;
+    - Busca por nome da empresa;
 - Página de detalhes da empresa;
 
 ## Rodando o projeto em ambiente de desenvolvimento
