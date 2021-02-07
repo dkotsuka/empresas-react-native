@@ -1,3 +1,5 @@
+// @ts-ignore
+import {BASE_URL} from '@env';
 import {Enterprise, EnterpriseDetails} from './enterprise.service.types';
 
 export interface MappedEnterprise {
@@ -16,17 +18,20 @@ export interface MappedEnterprise {
   sharedPrice: number;
   owned: boolean;
   email: string;
-  shares?: number;
-  ownShares?: number;
+}
+
+export interface MappedEnterpriseDetails extends MappedEnterprise {
+  shares: number;
+  ownShares: number;
 }
 
 export interface MappedType {
-    id: number;
-    name: string;
+  id: number;
+  name: string;
 }
 
 class EnterpriseMapper {
-  public mapDetails(input: EnterpriseDetails): MappedEnterprise {
+  public mapDetails(input: EnterpriseDetails): MappedEnterpriseDetails {
     return {
       id: input.id,
       name: input.enterprise_name,
@@ -37,14 +42,14 @@ class EnterpriseMapper {
       linkedin: input.linkedin,
       facebook: input.facebook,
       phone: input.phone,
-      photo: input.photo,
+      photo: `${BASE_URL}${input.photo}`,
       typeId: input.enterprise_type.id,
       typeName: input.enterprise_type.enterprise_type_name,
       sharedPrice: input.share_price,
       owned: input.own_enterprise,
       email: input.email_enterprise,
       shares: input.shares,
-      ownShares: input.own_shares
+      ownShares: input.own_shares,
     };
   }
 
@@ -59,26 +64,30 @@ class EnterpriseMapper {
       linkedin: input.linkedin,
       facebook: input.facebook,
       phone: input.phone,
-      photo: input.photo,
+      photo: `${BASE_URL}${input.photo}`,
       typeId: input.enterprise_type.id,
       typeName: input.enterprise_type.enterprise_type_name,
       sharedPrice: input.share_price,
       owned: input.own_enterprise,
-      email: input.email_enterprise
+      email: input.email_enterprise,
     };
   }
 
   public mapAll(inputs: Enterprise[]): [MappedEnterprise[], MappedType[]] {
-    let types: MappedType[] = []
+    let types: MappedType[] = [];
+    const obj: any = {}
     const result = inputs.map((input) => {
-        types.push({
-            name: input.enterprise_type.enterprise_type_name,
-            id: input.enterprise_type.id,
-        })
-        return this.mapOne(input)
+      const type = {
+        name: input.enterprise_type.enterprise_type_name,
+        id: input.enterprise_type.id
+      }
+      obj[type.name] = type
+      return this.mapOne(input);
     });
-    types = types.filter((type) => types.includes(type))
-    return [result, types]
+    const keys = Object.keys(obj)
+    types = keys.map(key => obj[key])
+    
+    return [result, types];
   }
 }
 

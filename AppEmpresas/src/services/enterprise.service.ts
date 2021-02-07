@@ -2,7 +2,7 @@ import axios from 'axios'
 // @ts-ignore
 import { BASE_URL, API_VERSION } from '@env';
 import { Enterprise, EnterpriseDetails } from './enterprise.service.types';
-import { enterpriseMapper, MappedEnterprise, MappedType } from './enterprise.mapper';
+import { enterpriseMapper, MappedEnterprise, MappedEnterpriseDetails, MappedType } from './enterprise.mapper';
 
 interface ListResult {
     enterprises: MappedEnterprise[],
@@ -29,7 +29,7 @@ class EnterpriseService {
         const queryFilters = type ? `&name=${query}` : ""
         const filters = (typeFilters || queryFilters) ? `?${typeFilters}${queryFilters}` : ""
 
-        const url = `${BASE_URL}${API_VERSION}enterprises${filters}`
+        const url = `${BASE_URL}${API_VERSION}/enterprises${filters}`
         const result: ListResult = {
             enterprises: [],
             types: []
@@ -46,15 +46,17 @@ class EnterpriseService {
         return result
     }
 
-    public async getOne(enterpriseId: number|string) {
-        const url = `${BASE_URL}${API_VERSION}enterprises/${enterpriseId}`
+    public async getOne(enterpriseId: number|string): Promise<MappedEnterpriseDetails | null> {
+        const url = `${BASE_URL}${API_VERSION}/enterprises/${enterpriseId}`
+        let result = null
         try {
             const response = await axios.get(url, {headers: this.headers})
             const resEnterprise: EnterpriseDetails = response.data.enterprise
-
+            result = enterpriseMapper.mapDetails(resEnterprise)
         } catch(error) {
-
+            console.log(error, url)
         }
+        return result
     }
 }
 

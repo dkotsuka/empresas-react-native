@@ -4,7 +4,7 @@ import { BASE_URL, API_VERSION } from '@env';
 import { UserState } from '../redux/reducers/auth-reducer';
 
 class AuthenticationService {
-    private URL = `${BASE_URL}${API_VERSION}users/auth/sign_in`
+    private URL = `${BASE_URL}${API_VERSION}/users/auth/sign_in`
     private HEADERS = { 'Content-Type': 'application/json' }
 
     public async login(email: string, password: string) {
