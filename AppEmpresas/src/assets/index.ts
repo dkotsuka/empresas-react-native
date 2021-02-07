@@ -4,4 +4,5 @@ export const Icons = {
     mail: () => require("./icons/mail.png"),
     linkedin: () => require("./icons/linkedin.png"),
     phone: () => require("./icons/phone.png"),
+    search: () => require("./icons/search.png"),
 }

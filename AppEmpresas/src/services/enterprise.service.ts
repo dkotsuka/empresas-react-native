@@ -26,7 +26,7 @@ class EnterpriseService {
 
     public async list(type?: number, query?: string): Promise<ListResult> {
         const typeFilters = type ? `enterprise_types=${type}` : ""
-        const queryFilters = type ? `&name=${query}` : ""
+        const queryFilters = query ? `&name=${query}` : ""
         const filters = (typeFilters || queryFilters) ? `?${typeFilters}${queryFilters}` : ""
 
         const url = `${BASE_URL}${API_VERSION}/enterprises${filters}`

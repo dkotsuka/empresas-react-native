@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {Text} from 'react-native';
 import {
   Navigation,
   NavigationComponentProps,
@@ -7,10 +6,12 @@ import {
 } from 'react-native-navigation';
 import {useDispatch, useSelector} from 'react-redux';
 import {PageNames} from '..';
+import { FilterSelector } from '../../components/filter.component';
 import {Root} from '../../components/root.component';
+import { SearchBar } from '../../components/search-bar.component';
 import {AppReduxState} from '../../redux/components/redux-store';
 import { actionLogout } from '../../redux/reducers/auth-actions';
-import {MappedEnterprise} from '../../services/enterprise.mapper';
+import {MappedEnterprise, MappedType} from '../../services/enterprise.mapper';
 import {enterpriseService} from '../../services/enterprise.service';
 import {EnterpriseItem} from './enterprise-item.component';
 import {EnterpriseList} from './enterprise-list.styles';
@@ -22,6 +23,9 @@ const EnterpriseListPage: NavigationFunctionComponent<EnterpriseListPageProps> =
 ) => {
   const {token, client, uid} = useSelector( (state: AppReduxState) => state.user );
   const [list, setList] = useState<MappedEnterprise[]>([]);
+  const [filters, setfilters] = useState<MappedType[]>([])
+  const [searchText, setSerachText] = useState<string>()
+  const [typeFilter, setTypeFilter] = useState<number>()
   const dipatch = useDispatch()
 
   useEffect(() => {
@@ -30,23 +34,27 @@ const EnterpriseListPage: NavigationFunctionComponent<EnterpriseListPageProps> =
     } else {
       getData();
     }
-  }, [uid]);
+  }, [uid, searchText, typeFilter]);
 
   const getData = async () => {
     if (token && client && uid) {
       const {enterprises, types} = await enterpriseService
         .setCredentials(token, client, uid)
-        .list();
+        .list(typeFilter, searchText);
       if(enterprises) {
         setList(enterprises);
+        setfilters(types)
       } else {
         dipatch(actionLogout())
       }
     }
   };
 
+  const onSearchSubmit = (text: string) => {
+    setSerachText(text)
+  }
+
   const onItemPress = (item: MappedEnterprise) => {
-    console.log(item.id)
     Navigation.push(props.componentId, {
         component: {
             name: PageNames.ENTERPRISE_DETAILS,
@@ -55,15 +63,15 @@ const EnterpriseListPage: NavigationFunctionComponent<EnterpriseListPageProps> =
     })
   }
 
+  const renderItem = ({item} : {item: MappedEnterprise}) => (
+    <EnterpriseItem item={item} onPress={() => onItemPress(item)}/>
+  )
+
   return (
     <Root>
-      <EnterpriseList
-        data={list}
-        renderItem={({item}) => (
-            <EnterpriseItem item={item}
-                onPress={() => onItemPress(item)}/>
-        )}
-      />
+      <SearchBar onSubmit={onSearchSubmit} placeholder="Buscar por nome"/>
+      <FilterSelector filters={filters} onApplyFilter={(id) => setTypeFilter(id)}/>
+      <EnterpriseList data={list} renderItem={renderItem} />
     </Root>
   );
 };
