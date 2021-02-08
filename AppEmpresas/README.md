@@ -17,6 +17,20 @@ O aplicativo conta com as funcionalidades:
     - Busca por nome da empresa;
 - Página de detalhes da empresa;
 
+## ScreenShots
+
+Fluxo de autenticação:
+![Main page deslogada](screenshots/01.png)
+Format: ![Alt Text](url)
+
+Fluxo de autenticação:
+![Modal de Login](screenshots/02.png)
+Format: ![Alt Text](url)
+
+Fluxo de autenticação:
+![Main page logada](screenshots/03.png)
+Format: ![Alt Text](url)
+
 ## Rodando o projeto em ambiente de desenvolvimento
 Para rodar o projeto localmente em ambiente de desenvolvimento, você deve primeiramente clonar este repositório.
 Criar um arquivo ```.env``` na pasta ```empresas-react-native/AppEmpresas/``` com as variáveis:

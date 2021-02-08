@@ -22,7 +22,8 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         <Input value={props.value} 
             placeholder={props.placeholder}
             onChangeText={props.onChangeText}
-            secureTextEntry={props.isPassword}/>
+            secureTextEntry={props.isPassword}
+            autoCapitalize="none"/>
     </Container>
 }
 

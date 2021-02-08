@@ -16,8 +16,8 @@ interface AuthPageProps extends NavigationComponentProps {}
 
 const AuthPage: NavigationFunctionComponent<AuthPageProps> = (props) => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('testeapple@ioasys.com.br');
-  const [password, setPassword] = useState('12341234');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [ message, setMessage ] = useState<string>()
 
