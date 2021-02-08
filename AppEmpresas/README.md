@@ -7,6 +7,9 @@
 
 ## Funcionalidades
 O aplicativo conta com as funcionalidades:
+- Página Inicial com saudações
+    - redirecionamento para login se deslogado;
+    - redirecionamento para página de Lista de Empresas ou ação de logoff caso logado;
 - Página de autenticação com email e senha;
 - Página de listagem de empresas;
     - Filtro por categoria de empresa;
