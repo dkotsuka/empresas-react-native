@@ -20,6 +20,7 @@ O aplicativo conta com as funcionalidades:
 ## ScreenShots
 
 Fluxo de autenticação:
+
 <a href="screenshots/01.png">
     <img src="screenshots/small_01.png" alt="main page screenshot" style="width:200px;"/>
 </a>
@@ -28,6 +29,27 @@ Fluxo de autenticação:
 </a>
 <a href="screenshots/02.png">
     <img src="screenshots/small_02.png" alt="login modal screenshot" style="width:200px;"/>
+</a>
+
+Telas de listagem de empresas / Detalhes da empresa
+
+<a href="screenshots/04.png">
+    <img src="screenshots/small_04.png" alt="login modal screenshot" style="width:200px;"/>
+</a>
+<a href="screenshots/06.png">
+    <img src="screenshots/small_06.png" alt="login modal screenshot" style="width:200px;"/>
+</a>
+
+Filtros desabilitados / Filtro aplicado / Busca por nome
+
+<a href="screenshots/05.png">
+    <img src="screenshots/small_05.png" alt="login modal screenshot" style="width:200px;"/>
+</a>
+<a href="screenshots/08.png">
+    <img src="screenshots/small_08.png" alt="login modal screenshot" style="width:200px;"/>
+</a>
+<a href="screenshots/07.png">
+    <img src="screenshots/small_07.png" alt="login modal screenshot" style="width:200px;"/>
 </a>
 
 ## Rodando o projeto em ambiente de desenvolvimento
