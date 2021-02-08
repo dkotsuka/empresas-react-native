@@ -1,4 +1,5 @@
-## Bibliotecas utilizadas
+## Bibliotecas & ferramentas utilizadas
+- Functional Componentes + React Hooks: Optei por utilizar esse padrão por ser a recomendação da comunidade, além de proporcionar melhor performance dos componentes e facilidade de codificação;
 - typescript: utilizei o typescript no projeto pois a tipagem deixa a programação mais fluída, além de proporcionar outros recursos como a utilização de classes;
 - redux | react-redux: utilizei por facilitar o gerenciamento de estados globais ou estados complexos que são compartilhados entre componentes;
 - react-native-navigation: lib mantida pela wix, se mostra uma boa opção em relação ao react-navigation, pois o fluxo de navegação pode ser implementado com mais facilidade;
@@ -18,7 +19,13 @@ O aplicativo conta com as funcionalidades:
 
 ## Rodando o projeto em ambiente de desenvolvimento
 Para rodar o projeto localmente em ambiente de desenvolvimento, você deve primeiramente clonar este repositório.
-Instalar as dependências
+Criar um arquivo ```.env``` na pasta ```empresas-react-native/AppEmpresas/``` com as variáveis:
+```
+BASE_URL='<BASE_URL>' // ex: BASE_URL='https://sample.domain.com.br'
+API_VERSION='<API_VERSION>' // ex: API_VERSION='/api/vX'
+```
+Instalar as dependências a partir da pasta ```empresas-react-native/AppEmpresas/```.
+
 ```
 npm install
 cd ios && pod install
