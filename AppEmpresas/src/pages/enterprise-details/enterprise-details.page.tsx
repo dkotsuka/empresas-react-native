@@ -12,7 +12,7 @@ import { IconButton } from '../../components/icon-button.component';
 import {Root} from '../../components/root.component';
 import { Row } from '../../components/row.component';
 import { AppReduxState } from '../../redux/components/redux-store';
-import { actionLogout } from '../../redux/reducers/auth-actions';
+import { actionExpiredSession } from '../../redux/reducers/auth-actions';
 import { MappedEnterpriseDetails } from '../../services/enterprise.mapper';
 import { enterpriseService } from '../../services/enterprise.service';
 import { DetailsPageAddress, DetailsPageButtonContainer, DetailsPageContainer, DetailsPageDescription, DetailsPageImage, DetailsPageLabel, DetailsPageSecondaryLabel, DetailsPageTitle } from './enterprise-details.styles';
@@ -40,7 +40,7 @@ const EnterpriseDetailsPage: NavigationFunctionComponent<EnterpriseDetailsPagePr
       if(data) {
         setData(data);
       } else {
-        dipatch(actionLogout())
+        dipatch(actionExpiredSession())
       }
     }
   };

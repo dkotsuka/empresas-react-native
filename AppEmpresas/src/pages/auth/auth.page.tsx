@@ -8,9 +8,9 @@ import {useDispatch} from 'react-redux';
 import {Button} from '../../components/button.component';
 import {Root} from '../../components/root.component';
 import {TextInput} from '../../components/text-input.component';
-import {actionLogin} from '../../redux/reducers/auth-actions';
+import {actionLogin, actionLoginError} from '../../redux/reducers/auth-actions';
 import {authenticationService} from '../../services/authentication.service';
-import {AuthPageContainer} from './auth.page.styles';
+import {AuthPageContainer, LogoutMessage} from './auth.page.styles';
 
 interface AuthPageProps extends NavigationComponentProps {}
 
@@ -19,17 +19,21 @@ const AuthPage: NavigationFunctionComponent<AuthPageProps> = (props) => {
   const [email, setEmail] = useState('testeapple@ioasys.com.br');
   const [password, setPassword] = useState('12341234');
   const [loading, setLoading] = useState(false);
+  const [ message, setMessage ] = useState<string>()
 
   const login = async () => {
     setLoading(true);
-    const {token, client, uid} = await authenticationService.login(
+    const {token, client, uid, message} = await authenticationService.login(
       email,
       password,
     );
+    setMessage(message)
     if (token && client && uid) {
       dispatch(actionLogin(token, client, uid));
       setLoading(false);
       Navigation.dismissModal(props.componentId)
+    } else {
+      dispatch(actionLoginError())
     }
   };
 
@@ -40,6 +44,7 @@ const AuthPage: NavigationFunctionComponent<AuthPageProps> = (props) => {
   return (
     <Root>
       <AuthPageContainer>
+        {message && <LogoutMessage >{message}</LogoutMessage>}
         <TextInput
           value={email}
           placeholder="Digite seu e-mail"

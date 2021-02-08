@@ -10,7 +10,7 @@ import { FilterSelector } from '../../components/filter.component';
 import {Root} from '../../components/root.component';
 import { SearchBar } from '../../components/search-bar.component';
 import {AppReduxState} from '../../redux/components/redux-store';
-import { actionLogout } from '../../redux/reducers/auth-actions';
+import { actionExpiredSession } from '../../redux/reducers/auth-actions';
 import {MappedEnterprise, MappedType} from '../../services/enterprise.mapper';
 import {enterpriseService} from '../../services/enterprise.service';
 import { EmptyEnterpriseList } from './empty-enterprise-list.component';
@@ -46,7 +46,7 @@ const EnterpriseListPage: NavigationFunctionComponent<EnterpriseListPageProps> =
         setList(enterprises);
         setfilters(types)
       } else {
-        dipatch(actionLogout())
+        dipatch(actionExpiredSession())
       }
     }
   };
