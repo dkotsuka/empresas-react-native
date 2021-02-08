@@ -27,12 +27,14 @@ const EnterpriseListPage: NavigationFunctionComponent<EnterpriseListPageProps> =
   const [filters, setfilters] = useState<MappedType[]>([])
   const [searchText, setSerachText] = useState<string>()
   const [typeFilter, setTypeFilter] = useState<number>()
+  const [ isLoading, setLoading ] = useState(true)
   const dipatch = useDispatch()
 
   useEffect(() => {
     if (!token) {
       Navigation.showModal({component: {name: PageNames.AUTH}});
     } else {
+      setLoading(true)
       getData();
     }
   }, [uid, searchText, typeFilter]);
@@ -49,6 +51,7 @@ const EnterpriseListPage: NavigationFunctionComponent<EnterpriseListPageProps> =
         dipatch(actionExpiredSession())
       }
     }
+    setLoading(false)
   };
 
   const onSearchSubmit = (text: string) => {
@@ -75,7 +78,7 @@ const EnterpriseListPage: NavigationFunctionComponent<EnterpriseListPageProps> =
       <EnterpriseList 
         data={list} 
         renderItem={renderItem}
-        ListEmptyComponent={<EmptyEnterpriseList/>}/>
+        ListEmptyComponent={<EmptyEnterpriseList isLoading={isLoading}/>}/>
     </Root>
   );
 };
