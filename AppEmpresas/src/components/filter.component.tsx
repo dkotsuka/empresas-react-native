@@ -28,8 +28,9 @@ export const FilterSelector: React.FC<FilterSelectorProps> = (props) => {
         <>
             <DetailsPageLabel>Por Categoria</DetailsPageLabel>
             <FilterOptionsContainer>
-                {filters.map(filter => (
+                {filters.map((filter, index) => (
                     <ToggleButton 
+                        key={filter.name + index}
                         text={filter.name} 
                         onPress={() => selectFilter(filter.id)} 
                         isActive={filter.id==selected}/>

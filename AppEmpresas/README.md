@@ -19,7 +19,7 @@ O aplicativo conta com as funcionalidades:
 
 ## ScreenShots
 
-Fluxo de autenticação:
+### Fluxo de autenticação:
 
 <a href="screenshots/01.png">
     <img src="screenshots/small_01.png" alt="main page screenshot" style="width:200px;"/>
@@ -31,7 +31,7 @@ Fluxo de autenticação:
     <img src="screenshots/small_02.png" alt="login modal screenshot" style="width:200px;"/>
 </a>
 
-Telas de listagem de empresas / Detalhes da empresa
+### Telas de listagem de empresas / Detalhes da empresa
 
 <a href="screenshots/04.png">
     <img src="screenshots/small_04.png" alt="login modal screenshot" style="width:200px;"/>
@@ -40,7 +40,7 @@ Telas de listagem de empresas / Detalhes da empresa
     <img src="screenshots/small_06.png" alt="login modal screenshot" style="width:200px;"/>
 </a>
 
-Filtros desabilitados / Filtro aplicado / Busca por nome
+### Filtros desabilitados / Filtro aplicado / Busca por nome
 
 <a href="screenshots/05.png">
     <img src="screenshots/small_05.png" alt="login modal screenshot" style="width:200px;"/>
