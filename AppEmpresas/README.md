@@ -20,9 +20,15 @@ O aplicativo conta com as funcionalidades:
 ## ScreenShots
 
 Fluxo de autenticação:
-<img src="screenshots/01.png" alt="main page screenshot" style="width:200px;"/>
-<img src="screenshots/03.png" alt="main page screenshot" style="width:200px;"/>
-<img src="screenshots/02.png" alt="login modal screenshot" style="width:200px;"/>
+<a href="screenshots/01.png">
+    <img src="screenshots/small_01.png" alt="main page screenshot" style="width:200px;"/>
+</a>
+<a href="screenshots/03.png">
+    <img src="screenshots/small_03.png" alt="main page screenshot" style="width:200px;"/>
+</a>
+<a href="screenshots/02.png">
+    <img src="screenshots/small_02.png" alt="login modal screenshot" style="width:200px;"/>
+</a>
 
 ## Rodando o projeto em ambiente de desenvolvimento
 Para rodar o projeto localmente em ambiente de desenvolvimento, você deve primeiramente clonar este repositório.
